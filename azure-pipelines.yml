@@ -6,10 +6,7 @@
 trigger:
 - master
 
-pool:
-  vmImage: 'dockeragent:latest'
-
-container: dockeragent:latest
+pool: Default
 
 variables:
   solution: '**/*.sln'
