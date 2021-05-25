@@ -14,10 +14,19 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- task: NuGetToolInstaller@1
-
-- task: NuGetCommand@2
+- task: SonarCloudPrepare@1
   inputs:
-    restoreSolution: '$(solution)'
+    SonarCloud: 'sonarcloud'
+    organization: 'ahmedmarmouch'
+    scannerMode: 'MSBuild'
+    projectKey: 'ahmedmarmouch_elite'
+    projectName: 'elite'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
 
+- task: SonarCloudAnalyze@1
+  displayName: 'Run SonarCloud analysis'
 
+- task: SonarCloudPublish@1
+  displayName: 'Publish results on build summary'
