@@ -22,8 +22,20 @@ steps:
     projectKey: 'ahmedmarmouch_elite'
     projectName: 'elite'
 
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '**/*.csproj'
+    
 - task: SonarCloudAnalyze@1
   displayName: 'Run SonarCloud analysis'
 
 - task: SonarCloudPublish@1
   displayName: 'Publish results on build summary'
+
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: true
