@@ -21,9 +21,6 @@ steps:
     scannerMode: 'MSBuild'
     projectKey: 'ahmedmarmouch_elite'
     projectName: 'elite'
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'
 
 - task: SonarCloudAnalyze@1
   displayName: 'Run SonarCloud analysis'
